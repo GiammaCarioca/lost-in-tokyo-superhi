@@ -48,10 +48,14 @@ const Nav = () => (
 const Attraction = ({ title, description, image, className }) => {
   const [showInfo, setShowInfo] = React.useState(false);
 
+  const toggleInfo = () => {
+    setShowInfo(!showInfo);
+  };
+
   return (
     <div
       className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer attraction ${className}`}
-      onClick={() => setShowInfo(true)}
+      onClick={() => toggleInfo()}
     >
       <div className="relative">
         <div
