@@ -1,4 +1,4 @@
-const Highlight = ({ children, color }) => (
+const Highlight = ({ color, children }) => (
   <>
     <span className={`relative highlight highlight-${color}`}>
       <span className="relative z-2">{children}</span>
@@ -23,10 +23,14 @@ const Intro = () => (
   </div>
 );
 
-const NavItem = ({ className, href, children: text }) => (
+const NavItem = ({ className, href, children: text, logo }) => (
   <li className={`mh2-ns f6 f4-1 tc ${className}`}>
     <a className="white no-underline" href={href}>
-      {text}
+      {logo ? (
+        <img src="../images/logo.svg" alt="logo" className="db center logo" />
+      ) : (
+        text
+      )}
     </a>
   </li>
 );
