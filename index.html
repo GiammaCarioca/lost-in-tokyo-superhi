@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lost in Tokyo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Overpass+Mono:400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/tachyons.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body class="bg-black">
+    <!-- this is the element where react will mount onto -->
+    <div id="root"></div>
+    <!-- load react and react-dom for working with web -->
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <!-- we need a tool called babel to transform the jsx code for us -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- load our data -->
+    <script src="data/menu.js"></script>
+    <script src="data/attractions.js"></script>
+    <script>
+      // here we tell babel to grab our code and convert it to regular javascript
+      fetch("js/app.js").then(function (response) {
+        response.text().then(function (js) {
+          eval(
+            Babel.transform(js, {
+              presets: ["es2016", "react"],
+            }).code
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
