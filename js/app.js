@@ -52,10 +52,15 @@ const Attraction = ({ title, description, image, className }) => {
     setShowInfo(!showInfo);
   };
 
+  const closeInfo = () => {
+    setShowInfo(false);
+  };
+
   return (
     <div
       className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer attraction ${className}`}
       onClick={() => toggleInfo()}
+      onMouseLeave={() => closeInfo()}
     >
       <div className="relative">
         <div
