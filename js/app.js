@@ -23,15 +23,19 @@ const Intro = () => (
   </div>
 );
 
+const NavItem = ({ className, href, children: text }) => (
+  <li className={`mh2-ns f6 f4-1 tc ${className}`}>
+    <a className="white no-underline" href={href}>
+      {text}
+    </a>
+  </li>
+);
+
 const Nav = () => (
   <nav className="pt3 pt4-ns mb4 mb0-ns">
     <ul className="list flex flex-wrap flex-nowrap-ns justify-between items-center pa0 ma0">
       {menu.map((item, index) => (
-        <li key={index} className={`mh2-ns f6 f4-1 tc ${item.className}`}>
-          <a className="white no-underline" href={item.href}>
-            {item.children}
-          </a>
-        </li>
+        <NavItem key={index} {...item} />
       ))}
     </ul>
   </nav>
