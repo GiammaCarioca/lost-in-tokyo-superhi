@@ -45,7 +45,23 @@ const Nav = () => (
   </nav>
 );
 
-const Attraction = ({ title, description, image, className }) => {
+const Overlay = ({ showInfo, title, description }) => (
+  <div
+    className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay"
+    style={{ transform: showInfo ? "none" : "translateY(-100%)" }}
+  >
+    <div>
+      <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">
+        {title}
+      </h1>
+      <p className="lh-title lh-copy-ns mv0 black f6 measure-l">
+        {description}
+      </p>
+    </div>
+  </div>
+);
+
+const Attraction = ({ image, className, ...props }) => {
   const [showInfo, setShowInfo] = React.useState(false);
 
   const toggleInfo = () => {
@@ -63,19 +79,7 @@ const Attraction = ({ title, description, image, className }) => {
       onMouseLeave={() => closeInfo()}
     >
       <div className="relative">
-        <div
-          className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay"
-          style={{ transform: showInfo ? "none" : "translateY(-100%)" }}
-        >
-          <div>
-            <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">
-              {title}
-            </h1>
-            <p className="lh-title lh-copy-ns mv0 black f6 measure-l">
-              {description}
-            </p>
-          </div>
-        </div>
+        <Overlay showInfo={showInfo} {...props} />
         <img src={`../images/${image}`} className="db" />
       </div>
     </div>
