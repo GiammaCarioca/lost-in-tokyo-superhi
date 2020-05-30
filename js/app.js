@@ -27,7 +27,7 @@ const NavItem = ({ className, href, children: text, logo }) => (
   <li className={`mh2-ns f6 f4-l tc ${className}`}>
     <a className="white no-underline" href={href}>
       {logo ? (
-        <img src="../images/logo.svg" alt="logo" className="db center logo" />
+        <img src="images/logo.svg" alt="logo" className="db center logo" />
       ) : (
         text
       )}
@@ -90,7 +90,7 @@ const Attraction = ({ image, className, ...props }) => {
     >
       <div className="relative">
         <Overlay showInfo={showInfo} {...props} />
-        <img src={`../images/${image}`} className="db" />
+        <img src={`images/${image}`} className="db" />
       </div>
     </div>
   );
