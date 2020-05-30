@@ -14,9 +14,9 @@ const Intro = () => (
       in <Highlight color="blue">Tokyo</Highlight>, Japan.
     </p>
     <p>
-      From <Highlight color="blue">museums</Highlight> and
-      <Highlight color="blue">galleries</Highlight>, to
-      <Highlight color="pink">robot restaurants</Highlight> and
+      From <Highlight color="blue">museums</Highlight> and{" "}
+      <Highlight color="blue">galleries</Highlight>, to{" "}
+      <Highlight color="pink">robot restaurants</Highlight> and{" "}
       <Highlight color="pink">kitten cafes</Highlight>, Tokyo is the gift that
       keeps on giving. <Highlight color="yellow">Dattebayo!</Highlight>
     </p>
@@ -24,7 +24,7 @@ const Intro = () => (
 );
 
 const NavItem = ({ className, href, children: text, logo }) => (
-  <li className={`mh2-ns f6 f4-1 tc ${className}`}>
+  <li className={`mh2-ns f6 f4-l tc ${className}`}>
     <a className="white no-underline" href={href}>
       {logo ? (
         <img src="../images/logo.svg" alt="logo" className="db center logo" />
@@ -45,14 +45,24 @@ const Nav = () => (
   </nav>
 );
 
-const Overlay = ({ showInfo, title, description }) => (
+const Overlay = ({ showInfo, title, description, link }) => (
   <div
     className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay"
     style={{ transform: showInfo ? "none" : "translateY(-100%)" }}
   >
     <div>
       <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">
-        {title}
+        {link ? (
+          <a
+            className="f4 f3-ns mt0 mb2 regular black normal lh-title no-underline"
+            href={`${link}`}
+            target="_blank"
+          >
+            {title}
+          </a>
+        ) : (
+          title
+        )}
       </h1>
       <p className="lh-title lh-copy-ns mv0 black f6 measure-l">
         {description}
@@ -75,7 +85,7 @@ const Attraction = ({ image, className, ...props }) => {
   return (
     <div
       className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer attraction ${className}`}
-      onClick={() => toggleInfo()}
+      onMouseEnter={() => toggleInfo()}
       onMouseLeave={() => closeInfo()}
     >
       <div className="relative">
